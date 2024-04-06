@@ -28,6 +28,7 @@ gulp.task('script', () => {
     .pipe(sourcemaps.init())
     .pipe(eslint({ fix: true }))
     .pipe(eslint.format())
+    .pipe(eslint.failAfterError())
     .pipe(concat('theme.js'))
     .pipe(replace(/^(export|import).*/gm, ''))
     .pipe(babel());
