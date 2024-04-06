@@ -1,0 +1,147 @@
+extends  layouts/LayoutTheme
+include mixins/pages/About
+include mixins/pages/Services
+include mixins/pages/Gallery
+include mixins/pages/Blogs
+include mixins/pages/Portfolio
+
+block append styles
+  link(href=`${CWD}vendors/swiper/swiper-bundle.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/prism/prism.css`, rel='stylesheet')
+
+block append scripts
+  script(src='https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL')
+  script(src=`${CWD}vendors/swiper/swiper-bundle.min.js`)
+  script(src=`${CWD}vendors/isotope-layout/isotope.pkgd.min.js`) 
+  script(src=`${CWD}vendors/isotope-packery/packery-mode.pkgd.min.js`)  
+  script(src!=`https://maps.googleapis.com/maps/api/js?key=${APIGmap}&callback=initMap` async)
+  script(src=`${CWD}vendors/countup/countUp.umd.js`) 
+  script(src=`${CWD}vendors/bigpicture/BigPicture.js`)
+
+append variables
+  - var gridNav = 'nav-four-item-one-column';
+  - var breakPoint = 'lg';
+  
+  -
+    var navItems= [
+      {
+        bgColor:'nav-blue-soft',
+        bgimage:'about-4-1.png',
+        icons:'diamond-4-1.png',
+        navItem:'About',
+        href:'#about',
+      },
+      {
+        bgColor:'nav-cyan-soft',
+        bgimage:'services-4-1.png',
+        icons:'thunder-4-1.png',
+        navItem:'Services',
+        href:'#services',
+      },
+      {
+        bgColor:'nav-purple-soft',
+        bgimage:'gallery-4-1.png',
+        icons:'camera-4-1.png',
+        navItem:'Gallery',
+        href:'#gallery',
+      },
+      {
+        bgColor:'nav-indigo-soft',
+        bgimage:'blog-4-1.png',
+        icons:'pencil-4-1.png',
+        navItem:'Blogs',
+        href:'#blogs',
+      },
+
+    ];
+
+  -
+    var navLinks={ 
+      about: [
+        {
+          title:'blogs',
+          href:'#blogs',
+        },
+        {
+          title:'services',
+          href:'#services',
+        },
+      ],
+      services: [
+        {
+          title:'about',
+          href:'#about',
+        },
+        {
+          title:'gallery',
+          href:'#gallery',
+        },
+      ],
+      gallery: [
+        {
+          title:'services',
+          href:'#services',
+        },
+        {
+          title:'blogs',
+          href:'#blogs',
+        },
+      ],
+      blogs: [
+        {
+          title:'gallery',
+          href:'#gallery',
+        },
+        {
+          title:'about',
+          href:'#about',
+        },
+      ],
+    };  
+  
+
+mixin Navigations(config) 
+  .col-12.vh-25.bg-black.w-100.position-relative.text-white.nav-hover-zoom(class=`${config.bgColor}`)
+    img.nav-img(src=`${CWD}assets/img/navigation/${config.bgimage}` alt='...')
+    .card-img-overlay.d-flex.align-items-center.h-100.px-5
+      img.nav-icons(src=`${CWD}assets/img/lineicons/${config.icons}`  alt="icon")
+      a.text-light.fs-1.fs-xl-2.fs-xxl-3.stretched-link.items.fw-bold.text-decoration-none.ps-4( href=`${config.href}`)=config.navItem 
+
+append content
+  #offcanvasStart.offcanvas.offcanvas-start.home-content.show(tabindex='-1', data-bs-backdrop="false"  data-bs-scroll="true" data-base-content='home')
+    +Background({
+      image: `${CWD}assets/img/header-split-youtube-backgroundd.png`,
+      className: 'overlay overlay-youtube',
+      youtube: {
+        videoId:'HHBsvKnCkwI', 
+        startSeconds: 0, 
+        endSeconds: 599, 
+      },
+    })
+    .offcanvas-body.d-flex.flex-center
+      .z-index-2
+        h1.fw-bold.fs-3.fs-lg-4.fs-xl-5.text-light We are 
+          span.fw-bolder.text-light boots5
+          
+        p.fs-1.text-light(style="line-height: 1.2; opacity: 1;") For over 20 years we’ve worked with 
+          br.d-none.d-lg-block
+          | companies all around the globe.
+        .mt-5
+          a(href=`${CWD}nav-eight-item-four-column.html#doc`).btn.btn-outline-light.mr-3 Get a quote
+          a(href=`${CWD}nav-eight-item-four-column.html#portfolio`).btn.btn-link.mt-3.mt-sm-0.pl-0
+            | See works 
+            span.ms-2.fas.fa-chevron-right
+  #offcanvasEnd.offcanvas.offcanvas-end.home-nav.px-0.show(tabindex='-1', data-bs-backdrop="false" data-bs-scroll="true" data-base-content='nav')
+    .offcanvas-body.p-0.position-lg-fixed.position-relative
+      .row.vh-100.g-0
+        each item in navItems
+          +Navigations(item)
+
+  +About(navLinks.about)
+  +Services(navLinks.services) 
+  +Gallery(navLinks.gallery)
+  +Blogs(navLinks.blogs) 
+ 
+block append afterMainContent
+          
+  

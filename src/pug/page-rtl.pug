@@ -1,0 +1,151 @@
+extends  layouts/LayoutTheme
+include mixins/pages/About
+include mixins/pages/Services
+include mixins/pages/Portfolio
+include mixins/pages/Contact
+
+
+block append styles
+  link(href=`${CWD}vendors/swiper/swiper-bundle.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/prism/prism.css`, rel='stylesheet')
+
+block append scripts
+  script(src='https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL')
+  script(src=`${CWD}vendors/swiper/swiper-bundle.min.js`)
+  script(src=`${CWD}vendors/isotope-layout/isotope.pkgd.min.js`) 
+  script(src=`${CWD}vendors/isotope-packery/packery-mode.pkgd.min.js`)  
+  script(src!=`https://maps.googleapis.com/maps/api/js?key=${APIGmap}&callback=initMap` async)
+  script(src=`${CWD}vendors/countup/countUp.umd.js`)
+  script(src=`${CWD}vendors/bigpicture/BigPicture.js`)
+
+
+prepend variables            
+  - var dir = 'rtl'
+  
+block styles
+  link(href=`${CWD}assets/css/theme-rtl${ENV === 'PROD'? '.min': ''}.css`, rel='stylesheet' id="style-rtl")
+
+
+prepend scripts
+
+append variables
+  - var gridNav = 'nav-four-item-two-column';
+  - var breakPoint = 'lg';
+  
+  -
+    var navItems= [
+      {
+        bgColor:'nav-blue-soft',
+        bgimage:'about-4-2.png',
+        icons:'diamond-4-2.png',
+        navItem:'About',
+        href:'#about',
+      },
+      {
+        bgColor:'nav-red-soft',
+        bgimage:'services-4-2.png',
+        icons:'thunder-4-2.png',
+        navItem:'Services',
+        href:'#services',
+      },
+      {
+        bgColor:'nav-yellow-soft',
+        bgimage:'contact-4-2.png',
+        icons:'map-4-2.png',
+        navItem:'Contact',
+        href:'#contact',
+      },
+      {
+        bgColor:'nav-purple-soft',
+        bgimage:'portfolio-4-2.png',
+        icons:'trophy-4-2.png',
+        navItem:'Portfolio',
+        href:'#portfolio',
+      },
+
+    ];
+
+  -
+    var navLinks={ 
+      about: [
+        {
+          title:'portfolio',
+          href:'#portfolio',
+        },
+        {
+          title:'services',
+          href:'#services',
+        },
+      ],
+      services: [
+        {
+          title:'about',
+          href:'#about',
+        },
+        {
+          title:'contact',
+          href:'#contact',
+        },
+      ],
+      contact: [
+        {
+          title:'services',
+          href:'#services',
+        },
+        {
+          title:'portfolio',
+          href:'#portfolio',
+        },
+      ],
+      portfolio: [
+        {
+          title:'contact',
+          href:'#contact',
+        },
+        {
+          title:'about',
+          href:'#about',
+        },
+      ],
+    };      
+
+
+mixin Navigations(config) 
+  .col-6.home-nav-items.position-relative.text-white.nav-hover-zoom(class=`${config.bgColor}`)
+    img.nav-img(src=`${CWD}assets/img/navigation/${config.bgimage}` alt='...')
+    .card-img-overlay.d-flex.flex-column.flex-center.align-items-xxl-start.justify-content-xxl-end.h-100.pb-4.px-5
+      .mb-3 
+        img.nav-icons(src=`${CWD}assets/img/lineicons/${config.icons}`  alt="icon")
+      a.text-light.fs-1.fs-xl-2.fs-xxl-3.stretched-link.items.fw-bold.text-decoration-none( href=`${config.href}`)=config.navItem  
+
+append content
+  #offcanvasStart.offcanvas.offcanvas-start.home-content.show(tabindex='-1', data-bs-backdrop="false" data-bs-scroll="true" data-base-content='home')
+    .offcanvas-body.d-flex.flex-column.flex-center
+      a.text-center(href="index.html")
+        img.mb-3.logo(src=`${CWD}assets/img/logos/logo-4-2.png` alt="logo")
+
+      p.text-center.mb-5 We believe in simplicity and excellence
+      ul.list-inline
+        li.list-inline-item
+          a.text-700.mx-2(href="#!") 
+            span.fab.fa-facebook
+        li.list-inline-item
+          a.text-700.mx-2(href="#!") 
+            span.fab.fa-twitter
+        li.list-inline-item
+          a.text-700.mx-2(href="#!") 
+            span.fab.fa-google-plus-g
+        
+  #offcanvasEnd.offcanvas.offcanvas-end.home-nav.px-0.show(tabindex='-1', data-bs-backdrop="false" data-bs-scroll="true" data-base-content='nav')
+    .offcanvas-body.p-0.position-lg-fixed.position-relative
+      .row.vh-lg-100.g-0.bg-100 
+        each item in navItems
+          +Navigations(item)
+
+  +About(navLinks.about)
+  +Services(navLinks.services)
+  +Portfolio(navLinks.portfolio)
+  +Contact(navLinks.contact)
+
+block append afterMainContent
+  +PortfolioModal                         

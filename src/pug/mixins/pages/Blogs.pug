@@ -1,0 +1,73 @@
+append variables
+  -
+    var blogItems= [
+      {
+        image:'blog-1.png',
+        title:`Why side projects fail`,
+        overlay:'card-overlay-1',
+      },
+      {
+        image:'blog-2.png',
+        title:`New design pattern: Drag To Tag`,
+        overlay:'card-overlay-1',
+      },
+      {
+        image:'blog-3.png',
+        title:`What is color?—Color theory in design`,
+        overlay:'card-overlay-1',
+      },
+      {
+        image:'blog-4.png',
+        title:`Vue is a great JavaScript framework for designers`,
+        overlay:'card-overlay-1',
+      },
+      {
+        image:'blog-5.png',
+        title:`Things I learned from doing a side project`,
+        overlay:'card-overlay-1',
+      },
+      {
+        image:'blog-6.png',
+        title:`do you still recommend us WordPress?`,
+        overlay:'card-overlay-1',
+      },
+      {
+        image:'blog-7.png',
+        title:`Brutalism is not great for looking relatable`,
+        overlay:'card-overlay-1',
+      },
+      {
+        image:'blog-8.png',
+        title:`Four ways screen design tools can be improved`,
+        overlay:'card-overlay-1',
+      },
+    ];
+
+mixin Blog(config)
+  .col-sm-6.col-xl-5
+    .card.h-100
+      img.blog-img(src=`${CWD}assets/img/blogs/${config.image}` alt='blog' ) 
+      .card-img-overlay(class=`${config.overlay}`)
+        h4.fs-lg-0.fs-xxl-1.text-white!=config.title
+        a.btn.btn-link.px-0(href='#!') Read
+          i.fas.fa-arrow-right.ms-2
+          
+mixin Blogs(navlink)
+  +Section('container-fluid')#blogs.p-0.page.d-none
+    .row
+      .col-lg-8.col-xl-9.order-1.order-lg-0.pt-10.pt-lg-7.pt-xxl-8.pb-0
+        .row.flex-center
+          .col-lg-10.col-xl-8
+            .text-center.mb-5.mb-lg-6
+              h2.mt-4.mt-lg-0
+                span.fw-medium Our 
+                | Top Blogs
+
+            .row.justify-content-center.g-3.py-3
+              each item in blogItems
+                +Blog(item)
+          .col-12    
+            +Cta('cta-blog.png','btn-boots-purple').mb-2
+            +Footer('bg-soft-orange-2','text-gradient-orange-soft-2','text-warning')
+      .col-lg-4.col-xl-3.col-12.position-absolute.position-lg-relative.ps-lg-0
+        +Stickyarea('Blogs', 'blogs.png', 'pencil.png',navlink)

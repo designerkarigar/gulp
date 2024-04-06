@@ -1,0 +1,202 @@
+mixin PortfolioModal
+  .modal.fade#modalFullscreen(tabindex='-1'  data-bs-keyboard="false" aria-labelledby='modalFullscreen' aria-hidden='true')
+  
+    .modal-dialog.modal-xl
+      .modal-content
+        .d-flex.justify-content-end.border-bottom-0.py-5.px-5
+          button.btn-close.position-fixed.z-index-1(type='button' data-bs-dismiss='modal' aria-label='Close')
+        +Section('container-fluid').pt-7
+          .row.justify-content-center.pb-5
+            .col-lg-8.col-xl-7
+              .modal-body
+                img(src=`${CWD}assets/img/projects/p-modal-9.png`  alt="...").img-fluid 
+                .row.my-5
+                  h2.mb-5.text-start Abstraction of the blues
+                  .col-lg-6.col-xl-5.text-start
+
+                    h5 Category 
+                    p Branding
+                    h5 Client 
+                    p ThemeWagon
+                    a.text-800.text-(href='https://themewagon.com') 
+                      i.fas.fa-link.me-2
+                      | https://themewagon.com
+
+                  .col-lg-6.col-xl-7.border-start.text-start.mt-4.mt-lg-0
+                    h5 Brief
+                    p I must explain to you how all this mistaken idea of reprobating pleasure and extolling pain arose. To do so, I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.
+                .mb-6
+                  p.my-3.text-start I must explain to you how all this mistaken idea of reprobating pleasure and extolling pain arose. To do so, I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
+                  p.my-3.text-start To do so, I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.No one rejects, dislikes or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
+
+                img.mb-4.img-fluid(src=`${CWD}assets/img/projects/portfolio-modal-2.png`  alt="...")
+                h4 Etaoin shrdlu
+                .mb-6
+                  p.my-3.text-start  Must explain to you how all this mistaken idea of reprobating pleasure and extolling pain arose. To do so, I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.
+                  p.my-3.text-start The discovery of the text's origin is attributed to Richard McClintock, a Latin scholar at Hampden–Sydney College. McClintock connected Lorem ipsum to Cicero's writing sometime before 1982 while searching for instances of the Latin word consectetur, which was rarely used in classical literature
+                .row
+                  .col-lg-6.text-center.text-lg-start.mb-6.mb-lg-0
+                    img(src=`${CWD}assets/img/projects/portfolio-modal-5.png`  alt="...").img-fluid
+                    h4.mt-3 Etaoin shrdlu
+                    p.px-3.px-lg-0 He rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains. 
+                  .col-lg-6.text-center.text-lg-start.mb-6.mb-lg-0  
+                    img.img-fluid(src=`${CWD}assets/img/projects/portfolio-modal-7.png`  alt="...")
+                    h4.mt-3 Etaoin shrdlu
+                    p.px-3.px-lg-0 The wise man therefore always holds in these matters to this principle of selection. 
+                .row 
+                  .col-lg-6.text-center.text-lg-start.mb-6.mb-lg-0
+                    img(src=`${CWD}assets/img/projects/portfolio-modal-6.png`  alt="...").img-fluid
+                  .col-lg-6.text-center.text-lg-start.mb-6.mb-lg-0  
+                    img.img-fluid(src=`${CWD}assets/img/projects/portfolio-modal-8.png`  alt="...")
+                    h4.mt-3 Etaoin shrdlu
+                    p.px-3.px-lg-0 What follows is H. Rackham's translation, as printed in the Loeb Classical Library edition
+                img.mb-2.img-fluid(src=`${CWD}assets/img/projects/portfolio-modal-1.png`  alt="...")       
+                img.mb-2.img-fluid(src=`${CWD}assets/img/projects/portfolio-modal-3.png`  alt="...")       
+                img.mb-2.img-fluid(src=`${CWD}assets/img/projects/portfolio-modal-4.png`  alt="...")
+                h4.mt-3 Etaoin shrdlu
+                p He rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.        
+
+
+mixin ImageItems
+  img.img-portfolio(src=`${CWD}assets/img/projects/portfolio-1.png` alt='')
+  a(href='#modalFullscreen' data-bs-toggle="modal" data-bs-target="#modalFullscreen")
+    i.fas.fa-eye.fs-2.text-light
+  +PortfolioModal('detailswgiwalkgmaklgnma')   
+
+mixin Sortable
+  .mb-5.sortable(data-filter-nav)&attributes(attributes)
+    ul.nav.menu.justify-content-center.mb-2(data-filter-nav)&attributes(attributes)
+      li.nav-item.ls
+        .isotope-nav.px-3.px-lg-2.px-xl-3.text-decoration-none.active(data-filter='*') 
+          i.fas.fa-th.fs-0.me-2
+          |All
+      li.nav-item.ls.me-2 
+        .isotope-nav.px-3.px-lg-2.px-xl-3.text-decoration-none(data-filter='.photography') 
+          i.fas.fa-camera.fs-0.me-2.fs-0
+          | Photography
+      li.nav-item.ls 
+        .isotope-nav.px-3.px-lg-2.px-xl-3.text-decoration-none(data-filter='.studio') 
+          i.fas.fa-lightbulb.fs-0.me-2.fs-0
+          | Studio
+      li.nav-item.ls 
+        .isotope-nav.px-3.px-lg-2.px-xl-3.text-decoration-none(data-filter='.interior') 
+          i.fas.fa-home.fs-0.me-2.fs-0
+          | Interior
+      li.nav-item.ls 
+        .isotope-nav.px-3.px-lg-2.px-xl-3.text-decoration-none(data-filter='.illustration') 
+          i.fas.fa-pen.fs-0.me-2.fs-0
+          | Illustration
+
+
+  .row.g-2.mt-2#portfolio-gallery(data-isotope!={layoutMode: 'packery' } )
+    .col-6.masonry-item.interior
+      .card.hoverbox.overflow-hidden
+        img(src=`${CWD}assets/img/projects/portfolio-1.png`  alt='').img-fluid
+        .card-img-overlay
+          .px-4.hoverbox-content.d-flex.flex-column.flex-center
+            a.stretched-link(href='#' data-bs-toggle="modal" data-bs-target="#modalFullscreen")
+              i.fas.fa-eye.fs-2.text-light 
+
+
+    .col-6.col-md-3.masonry-item.photography
+      .card.hoverbox.overflow-hidden
+        img(src=`${CWD}assets/img/projects/portfolio-2.png`  alt='').img-fluid
+        .card-img-overlay
+          .px-4.hoverbox-content.d-flex.flex-column.flex-center
+            a.stretched-link(href='#' data-bs-toggle="modal" data-bs-target="#modalFullscreen")
+              i.fas.fa-eye.fs-2.text-light    
+
+    .col-6.col-md-3.masonry-item.photography
+      .card.hoverbox.overflow-hidden
+        img(src=`${CWD}assets/img/projects/portfolio-3.png`  alt='').img-fluid
+        .card-img-overlay
+          .px-4.hoverbox-content.d-flex.flex-column.flex-center
+            a.stretched-link(href='#' data-bs-toggle="modal" data-bs-target="#modalFullscreen")
+              i.fas.fa-eye.fs-2.text-light  
+
+    .col-6.masonry-item.studio
+      .card.hoverbox.overflow-hidden
+        img(src=`${CWD}assets/img/projects/portfolio-4.png`  alt='').img-fluid
+        .card-img-overlay
+          .px-4.hoverbox-content.d-flex.flex-column.flex-center
+            a.stretched-link(href='#' data-bs-toggle="modal" data-bs-target="#modalFullscreen")
+              i.fas.fa-eye.fs-2.text-light 
+    .col-6.masonry-item.interior
+      .card.hoverbox.overflow-hidden
+        img(src=`${CWD}assets/img/projects/portfolio-8.png`  alt='').img-fluid
+        .card-img-overlay
+          .px-4.hoverbox-content.d-flex.flex-column.flex-center
+            a.stretched-link(href='#' data-bs-toggle="modal" data-bs-target="#modalFullscreen")
+              i.fas.fa-eye.fs-2.text-light 
+
+    .col-6.col-md-3.masonry-item.photography
+      .card.hoverbox.overflow-hidden
+        img(src=`${CWD}assets/img/projects/portfolio-5.png`  alt='').img-fluid
+        .card-img-overlay
+          .px-4.hoverbox-content.d-flex.flex-column.flex-center
+            a.stretched-link(href='#' data-bs-toggle="modal" data-bs-target="#modalFullscreen")
+              i.fas.fa-eye.fs-2.text-light 
+
+    .col-6.col-md-3.masonry-item.photography
+      .card.hoverbox.overflow-hidden
+        img(src=`${CWD}assets/img/projects/portfolio-6.png`  alt='').img-fluid
+        .card-img-overlay
+          .px-4.hoverbox-content.d-flex.flex-column.flex-center
+            a.stretched-link(href='#' data-bs-toggle="modal" data-bs-target="#modalFullscreen")
+              i.fas.fa-eye.fs-2.text-light 
+
+    .col-6.col-md-3.masonry-item.studio.illustration
+      .card.hoverbox.overflow-hidden
+        img(src=`${CWD}assets/img/projects/portfolio-7.png`  alt='').img-fluid
+        .card-img-overlay
+          .px-4.hoverbox-content.d-flex.flex-column.flex-center
+            a.stretched-link(href='#' data-bs-toggle="modal" data-bs-target="#modalFullscreen")
+              i.fas.fa-eye.fs-2.text-light    
+
+    .col-6.col-md-3.masonry-item.photography
+      .card.hoverbox.overflow-hidden
+        img(src=`${CWD}assets/img/projects/portfolio-10.png`  alt='').img-fluid
+        .card-img-overlay
+          .px-4.hoverbox-content.d-flex.flex-column.flex-center
+            a.stretched-link(href='#' data-bs-toggle="modal" data-bs-target="#modalFullscreen")
+              i.fas.fa-eye.fs-2.text-light 
+
+    .col-6.col-md-3.masonry-item.photography
+      .card.hoverbox.overflow-hidden
+        img(src=`${CWD}assets/img/projects/portfolio-12.png`  alt='').img-fluid
+        .card-img-overlay
+          .px-4.hoverbox-content.d-flex.flex-column.flex-center
+            a.stretched-link(href='#' data-bs-toggle="modal" data-bs-target="#modalFullscreen")
+              i.fas.fa-eye.fs-2.text-light   
+    .col-6.masonry-item.illustration
+      .card.hoverbox.overflow-hidden
+        img(src=`${CWD}assets/img/projects/portfolio-9.png`  alt='').img-fluid
+        .card-img-overlay
+          .px-4.hoverbox-content.d-flex.flex-column.flex-center
+            a.stretched-link(href='#' data-bs-toggle="modal" data-bs-target="#modalFullscreen")
+              i.fas.fa-eye.fs-2.text-light 
+
+    .col-6.col-sm-3.masonry-item.studio.illustration
+      .card.hoverbox.overflow-hidden
+        img(src=`${CWD}assets/img/projects/portfolio-11.png`  alt='').img-fluid
+        .card-img-overlay
+          .px-4.hoverbox-content.d-flex.flex-column.flex-center
+            a.stretched-link(href='#' data-bs-toggle="modal" data-bs-target="#modalFullscreen")
+              i.fas.fa-eye.fs-2.text-light 
+
+mixin Portfolio(navlink)
+  +Section('container-fluid')#portfolio.p-0.page.d-none
+    .row
+      .col-lg-8.col-xl-9.order-1.order-lg-0.pt-10.pt-lg-8.pt-xl-7.pt-xxl-8.pb-0
+        .row.flex-center
+          .col-lg-10.col-xl-7
+            .text-center.mb-5.mb-lg-6
+              h2
+                span.fw-medium Our
+                |  Latest Works
+            +Sortable
+          .col-12
+            +Cta('cta-portfolio.png','btn-boots-warning').mb-2
+            +Footer('bg-soft-pink','text-gradient-pink-soft','text-secondary')
+      .col-lg-4.col-xl-3.col-12.position-absolute.position-lg-relative.ps-lg-0
+        +Stickyarea('Portfolio', 'portfolio.png', 'trophy.png',navlink)

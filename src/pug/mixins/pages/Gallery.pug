@@ -1,0 +1,211 @@
+mixin Gallery(navlink)
+  +Section('container-fluid')#gallery.p-0.page.d-none
+    .row
+      .col-lg-8.col-xl-9.order-1.order-lg-0.pt-10.pt-xl-7.pt-xxl-8.pb-0
+        .row.min-vh-25.flex-center
+          .col-lg-10
+            .text-center.mb-5.mb-lg-6
+              h2
+                span.fw-medium Photos 
+                | we took
+            +Section('container-fluid').py-3#swiper
+              .row.justify-content-center
+                .col-lg-10.col-xl-8
+                  .swiper-container.theme-slider.gallerySwiper(data-swiper!={
+                    autoplay: true,
+                    loop: true,
+                    slideToClickedSlide: true,
+                      autoplay: {
+                      delay: 3000,
+                    }, 
+                    effect: 'fade',
+                    pagination: {
+                      type: 'bullets',
+                      clickable: true,
+              
+                    },
+
+                  })
+                    .swiper-wrapper.h-100
+                      .swiper-slide.h-100
+                        .card.h-100
+                          img.img-fluid(src=`${CWD}assets/img/gallery/gallery-1.png` alt='')
+                          .card-body.h-100.px-2
+                            h5.my-3.text-center Why do you use?
+                            p.mb-0 On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.
+                        
+                      .swiper-slide.h-100  
+                        .card.h-100
+                          img.img-fluid(src=`${CWD}assets/img/gallery/gallery-28.png` alt='')
+                          .card-body.h-100.px-2 
+                            h5.my-3.text-center What Does It Mean?
+                            p.mb-0 On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain
+                      .swiper-slide.h-100  
+                        .card.h-100
+                          img.img-fluid(src=`${CWD}assets/img/gallery/gallery-29.png` alt='')
+                          .card-body.h-100.px-2 
+                            h5.my-3.text-center How to Generate?
+                            p.mb-0 On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.
+                    
+                    .swiper-pagination    
+                   
+                  .row.justify-content-between
+                    .col-sm-6.my-sm-6.border-lg-end.pe-sm-5
+                      img.img-fluid(src=`${CWD}assets/img/gallery/gallery-2.png` alt='')
+                      h5.mb-2.mt-4 Product Photography
+                      p.mb-5 On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.
+
+                      img.img-fluid(src=`${CWD}assets/img/gallery/gallery-4.png` alt='')
+                      h5.mb-2.mt-4 Software Controlled
+                      p.mb-5 On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.
+
+                      img.img-fluid(src=`${CWD}assets/img/gallery/gallery-18.png` alt='')
+                      h5.mb-2.mt-4 Product Photography
+                      p.mb-5 On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.
+                   
+                    .col-sm-6.my-sm-6.border-lg-start.ps-sm-5
+                      img.img-fluid(src=`${CWD}assets/img/gallery/gallery-3.png` alt='')
+                      h5.mb-2.mt-4 Features
+                      p.mb-5 On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.
+                      
+                      img.img-fluid(src=`${CWD}assets/img/gallery/gallery-5.png` alt='')
+                      h5.mb-2.mt-4 Search
+                      p.mb-5 On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.
+                      
+                      img.img-fluid(src=`${CWD}assets/img/gallery/gallery-19.png` alt='')
+                      h5.mb-2.mt-4 Grepper Teams
+                      p.mb-5 On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.
+            +Section('container-fluid').py-3
+              .row.justify-content-center
+                .col-lg-10.col-xl-8
+                  .swiper-container.theme-slider.gallerySwiper(data-swiper!={
+                    autoplay: true,
+                    loop: true,
+                    slideToClickedSlide: true,
+                      autoplay: {
+                      delay: 3000,
+                    }, 
+                    effect: 'fade',
+                    pagination: {
+                      type: 'bullets',
+                      clickable: true,
+              
+                    },
+
+                  })
+                    .swiper-wrapper
+                      .swiper-slide
+                        .card 
+                          img.img-fluid(src=`${CWD}assets/img/gallery/gallery-25.png` alt='')
+                          .card-body.px-2
+                            h5.my-3.text-center Why do you se?
+                            p.mb-0 On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain .
+                        
+                      .swiper-slide  
+                        .card
+                          img.img-fluid(src=`${CWD}assets/img/gallery/gallery-26.png` alt='')
+                          .card-body.px-2 
+                            h5.my-3.text-center What Does It Mean?
+                            p.mb-0 On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.
+                      .swiper-slide  
+                        .card
+                          img.img-fluid(src=`${CWD}assets/img/gallery/gallery-27.png` alt='')
+                          .card-body.px-2 
+                            h5.my-3.text-center How to Generate?
+                            p.mb-0 On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.
+                    
+                    .swiper-pagination 
+                    
+                  .row.justify-content-between
+                    .col-sm-6.my-sm-6.border-lg-end.pe-sm-5
+                      img.img-fluid(src=`${CWD}assets/img/gallery/gallery-9.png` alt='')
+                      h5.mb-2.mt-4 Finibus Bonorum
+                      p.mb-5 On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.
+
+                      img.img-fluid(src=`${CWD}assets/img/gallery/gallery-11.png` alt='')
+                      h5.mb-2.mt-4 Finibus Bonorum
+                      p.mb-5 On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.
+
+                  
+                    .col-sm-6.my-sm-6.border-lg-start.ps-sm-5
+                      img.img-fluid(src=`${CWD}assets/img/gallery/gallery-10.png` alt='')
+                      h5.mb-2.mt-4 Finibus Bonorum
+                      p.mb-5 On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.
+                      
+                      img.img-fluid(src=`${CWD}assets/img/gallery/gallery-8.png` alt='')
+                      h5.mb-2.mt-4 Finibus Bonorum
+                      p.mb-5 But I must explain to you how all this mistaken idea of reprobating pleasure and extolling pain arose. To do so, I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.     
+            +Section('container-fluid').py-3
+              .row.justify-content-center
+                .col-lg-10.col-xl-8
+                  .swiper-container.theme-slider.gallerySwiper(data-swiper!={
+                    autoplay: true,
+                    loop: true,
+                    slideToClickedSlide: true,
+                      autoplay: {
+                      delay: 3000,
+                    }, 
+                    effect: 'fade',
+                    pagination: {
+                      type: 'bullets',
+                      clickable: true,
+              
+                    },
+
+                  })
+                    .swiper-wrapper
+                      .swiper-slide
+                        .card 
+                          img.img-fluid(src=`${CWD}assets/img/gallery/gallery-21.jpg` alt='')
+                          .card-body.px-2
+                            h5.my-3.text-center Finibus Bonorum
+                            p.mb-0 I must explain to you how all this mistaken idea of reprobating pleasure and extolling pain arose. To do so, I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. 
+                        
+                      .swiper-slide  
+                        .card
+                          img.img-fluid(src=`${CWD}assets/img/gallery/gallery-15.png` alt='')
+                          .card-body.px-2 
+                            h5.my-3.text-center Asemic writing
+                            p.mb-0 I must explain to you how all this mistaken idea of reprobating pleasure and extolling pain arose. To do so, I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. 
+                      .swiper-slide  
+                        .card
+                          img.img-fluid(src=`${CWD}assets/img/gallery/gallery-22.jpg` alt='')
+                          .card-body.px-2 
+                            h5.my-3.text-center Finibus Bonorum
+                            p.mb-0 I must explain to you how all this mistaken idea of reprobating pleasure and extolling pain arose. To do so, I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. 
+                    
+                    .swiper-pagination    
+                   
+                  .row.pt-5
+
+                    .col-sm-6.my-sm-6.border-lg-end.pe-sm-5
+                      img.img-fluid(src=`${CWD}assets/img/gallery/gallery-21.png` alt='')
+                      h5.mb-2.mt-4 Asemic writing
+                      p.mb-5 But I must explain to you how all this mistaken idea of reprobating pleasure and extolling pain arose. To do so, I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. 
+
+                      img.img-fluid(src=`${CWD}assets/img/gallery/gallery-16.png` alt='')
+                      h5.mb-2.mt-4 Asemic writing
+                      p.mb-5 But I must explain to you how all this mistaken idea of reprobating pleasure and extolling pain arose. To do so, I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. 
+
+                      img.img-fluid(src=`${CWD}assets/img/gallery/gallery-21.png` alt='')
+                      h5.mb-2.mt-4 Asemic writing
+                      p.mb-5 But I must explain to you how all this mistaken idea of reprobating pleasure and extolling pain arose. To do so, I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. 
+                     
+                    .col-sm-6.my-sm-6.border-lg-start.ps-sm-5
+                      img.img-fluid(src=`${CWD}assets/img/gallery/gallery-15.png` alt='')
+                      h5.mb-2.mt-4 Asemic writing
+                      p.mb-5 But I must explain to you how all this mistaken idea of reprobating pleasure and extolling pain arose. To do so, I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. 
+                      
+                      img.img-fluid(src=`${CWD}assets/img/gallery/gallery-17.png` alt='')
+                      h5.mb-2.mt-4 Asemic writing
+                      p.mb-5 But I must explain to you how all this mistaken idea of reprobating pleasure and extolling pain arose. To do so, I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. 
+                      
+                      img.img-fluid(src=`${CWD}assets/img/gallery/gallery-13.png` alt='')
+                      h5.mb-2.mt-4 Asemic writing
+                      p.mb-5 But I must explain to you how all this mistaken idea of reprobating pleasure and extolling pain arose. To do so, I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. 
+                      
+          .col-12                                           
+            +Cta('cta-gallery.png','btn-boots-warning').mb-2
+            +Footer('bg-soft-cyan-2','text-gradient-cyan-soft-2','text-success')
+      .col-lg-4.col-xl-3.position-absolute.position-lg-relative.ps-lg-0
+        +Stickyarea('Gallery', 'gallery.png', 'camera.png',navlink)

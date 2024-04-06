@@ -1,0 +1,187 @@
+extends  layouts/LayoutTheme
+include mixins/common/Card
+include mixins/pages/About
+include mixins/pages/Services
+include mixins/pages/Portfolio
+include mixins/pages/Contact
+include mixins/pages/Blogs
+include mixins/pages/Gallery
+
+
+
+block append styles
+  link(href=`${CWD}vendors/swiper/swiper-bundle.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/prism/prism.css`, rel='stylesheet')
+
+
+
+block append scripts
+  script(src='https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL')
+  script(src=`${CWD}vendors/swiper/swiper-bundle.min.js`)
+  script(src=`${CWD}vendors/isotope-layout/isotope.pkgd.min.js`) 
+  script(src=`${CWD}vendors/isotope-packery/packery-mode.pkgd.min.js`) 
+  script(src!=`https://maps.googleapis.com/maps/api/js?key=${APIGmap}&callback=initMap` async)
+  script(src=`${CWD}vendors/countup/countUp.umd.js`) 
+  script(src=`${CWD}vendors/bigpicture/BigPicture.js`)
+
+append variables
+  - var gridNav = 'nav-four-item-two-column';
+  - var breakPoint = 'lg';
+  
+  -
+    var navItems= [
+      {
+        bgColor:'nav-white-soft',
+        bgimage:'about-6-3.png',
+        icons:'diamond-6-3.png',
+        navItem:'About',
+        href:'#about',
+      },
+      {
+        bgColor:'nav-purple-soft',
+        bgimage:'services-6-3.png',
+        icons:'thunder-6-3.png',
+        navItem:'Services',
+        href:'#services',
+      },
+      {
+        bgColor:'nav-cyan-dark',
+        bgimage:'contact-6-3.png',
+        icons:'map-6-3.png',
+        navItem:'Contact',
+        href:'#contact',
+      },
+      {
+        bgColor:'nav-blue-dark',
+        bgimage:'portfolio-6-3.png',
+        icons:'trophy-6-3.png',
+        navItem:'Portfolio',
+        href:'#portfolio',
+      },
+     
+      {
+        bgColor:'nav-purple-dark',
+        bgimage:'blog-6-3.png',
+        icons:'pencil-6-3.png',
+        navItem:'Blog',
+        href:'#blogs',
+      },
+      {
+        bgColor:'nav-cyan-soft',
+        bgimage:'gallery-6-3.png',
+        icons:'camera-6-3.png',
+        navItem:'Gallery',
+        href:'#gallery',
+      },
+
+    ];
+    
+  -
+    var navLinks={ 
+      about: [
+        {
+          title:'gallery',
+          href:'#gallery',
+        },
+        {
+          title:'services',
+          href:'#services',
+        },
+      ],
+      services: [
+        {
+          title:'about',
+          href:'#about',
+        },
+        {
+          title:'contact',
+          href:'#contact',
+        },
+      ],
+      portfolio: [
+        {
+          title:'portfolio',
+          href:'#portfolio',
+        },
+        {
+          title:'blogs',
+          href:'#blogs',
+        },
+      ],
+      contact: [
+        {
+          title:'services',
+          href:'#services',
+        },
+        {
+          title:'portfolio',
+          href:'#portfolio',
+        },
+      ],
+    
+      blog: [
+        {
+          title:'portfolio',
+          href:'#portfolio',
+        },
+        {
+          title:'gallery',
+          href:'#gallery',
+        },
+      ],
+   
+      gallery: [
+        {
+          title:'blogs',
+          href:'#blogs',
+        },
+        {
+          title:'about',
+          href:'#about',
+        },
+      ],
+      
+    };  
+      
+
+mixin Navigations(config) 
+  .col-6.col-sm-4.vh-25.vh-lg-50.position-relative.text-white.nav-hover-zoom(class=`${config.bgColor}`)
+    img.nav-img(src=`${CWD}assets/img/navigation/${config.bgimage}` alt='...').h-100
+    .card-img-overlay.d-flex.flex-column.flex-center.align-items-xxl-start.justify-content-xxl-end.h-100.px-5.pb-4
+      .mb-3 
+        img.nav-icons(src=`${CWD}assets/img/lineicons/${config.icons}`  alt="icon")
+      a.text-light.fs-1.fs-xl-2.fs-xxl-3.stretched-link.items.fw-bold.text-decoration-none( href=`${config.href}`)=config.navItem 
+  
+append content
+  #offcanvasStart.offcanvas.offcanvas-start.home-content.show(tabindex='-1', data-bs-backdrop="false" data-bs-scroll="true" data-base-content='home')
+    .offcanvas-body.d-flex.flex-column.flex-center.h-sm-25vh.h-lg-50vh
+      .row.justify-content-center
+        .col-11.col-sm-9.col-lg-10.col-xxl-12.text-center
+          img(src=`${CWD}assets/img/logos/logo-6-3.png`, alt="").img-fluid.px-6.px-xl-6.px-xxl-100.w-lg-5.w-sm-75
+          h1.fw-light.mt-4.fs-2.fs-xl-4 
+            span.fw-bolder.text-gradient-blue(style="letter-spacing: -0.125rem;") Stitching Services 
+            span.fw-bolder.text-gradient-orange-1 @ your doostep.
+          p.mt-3.fs-0.d-none.d-lg-block Customized stylist visits to your home for Pick-up, Measurement and Designs Finalisation
+            br.d-none.d-xxl-block
+            | Delivery in 5-7 days
+          .mt-lg-4
+            a(href="tel:8826738307").text-900.fw-bold.px-2 CALL: +91-8826738307
+            br.d-block.d-sm-none
+            a(href="#contact").text-primary.fw-bold.px-2 Chat Now 
+              span.fas.fa-chevron-right(data-fa-transform="shrink-4 down-1.5" )
+  
+  #offcanvasEnd.offcanvas.offcanvas-end.home-nav.px-0.show(tabindex='-1', data-bs-backdrop="false" data-bs-scroll="true" data-base-content='nav')
+    .offcanvas-body.p-0.position-lg-fixed.position-relative
+      .row.vh-lg-100.g-0
+        each item in navItems
+          +Navigations(item)
+                
+  +About(navLinks.about)
+  +Services(navLinks.services) 
+  +Portfolio(navLinks.portfolio)
+  +Contact(navLinks.contact)
+  +Blogs(navLinks.blog) 
+  +Gallery(navLinks.gallery)       
+
+block append afterMainContent
+  +PortfolioModal   

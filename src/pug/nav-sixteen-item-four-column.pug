@@ -1,0 +1,256 @@
+extends  layouts/LayoutTheme
+include mixins/documentation/Doc
+include mixins/documentation/Rtl
+include mixins/documentation/Plugins
+include mixins/documentation/Mixins
+include mixins/common/Card
+include mixins/pages/About
+include mixins/pages/Services
+include mixins/pages/Portfolio
+include mixins/pages/Contact
+include mixins/pages/Faq
+include mixins/pages/Gallery
+include mixins/pages/Starter
+include mixins/pages/Blogs
+
+block append styles
+  link(href=`${CWD}vendors/swiper/swiper-bundle.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/prism/prism.css`, rel='stylesheet')
+
+
+
+block append scripts
+  script(src='https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL')
+  script(src=`${CWD}vendors/swiper/swiper-bundle.min.js`)
+  script(src=`${CWD}vendors/isotope-layout/isotope.pkgd.min.js`) 
+  script(src=`${CWD}vendors/isotope-packery/packery-mode.pkgd.min.js`)  
+  script(src!=`https://maps.googleapis.com/maps/api/js?key=${APIGmap}&callback=initMap` async)
+  script(src=`${CWD}vendors/countup/countUp.umd.js`) 
+  script(src=`${CWD}vendors/bigpicture/BigPicture.js`)
+
+append variables
+  - var gridNav = 'nav-four-item-two-column';
+  - var breakPoint = 'lg';
+  
+  -
+    var navItems= [
+      {
+        bgColor:'nav-yellow-soft',
+        bgimage:'about-16-4.png',
+        navItem:'About',
+        href:'#about',
+      },
+      {
+        bgColor:'nav-purple-soft',
+        bgimage:'services-16-4.png',
+        navItem:'Services',
+        href:'#services',
+      },
+      {
+        bgColor:'nav-orange-soft',
+        bgimage:'portfolio-16-4.png',
+        navItem:'Portfolio',
+        href:'#portfolio',
+      },
+      {
+        bgColor:'nav-blue-soft',
+        bgimage:'gallery-16-4.png',
+        navItem:'Gallery',
+        href:'#gallery',
+      },
+      {
+        bgColor:'nav-yellow-dark',
+        bgimage:'faq-16-4.png',
+        navItem:'FAQ',
+        href:'#faq',
+      },
+      {
+        bgColor:'nav-purple-soft',
+        bgimage:'contact-16-4.png',
+        navItem:'Contact',
+        href:'#contact',
+      },
+      {
+        bgColor:'nav-orange-dark', 
+        bgimage:'doc-16-4.png',
+        navItem:'Doc',
+        href:'#doc',
+      },
+      {
+        bgColor:'nav-blue-dark',     
+        bgimage:'starter-16-4.png',
+        navItem:'Starter',
+        href:'#starter',
+      },
+    
+      {
+        bgColor:'nav-indigo-soft',
+        bgimage:'categories-16-4.png',
+        navItem:'Categories',
+        href:'#starter',
+      },
+      {
+        bgColor:'nav-green-soft',
+        bgimage:'shop-16-4.png',
+        navItem:'Shop',
+        href:'#starter',
+      },
+      {
+        bgColor:'nav-cyan-soft',
+        bgimage:'buttons-16-4.png',
+        navItem:'Buttons',
+        href:'#starter',
+      },
+      {
+        bgColor:'nav-red-soft',
+        bgimage:'carousel-16-4.png',
+        navItem:'Carousel',
+        href:'#starter',
+      },
+      {
+        bgColor:'nav-indigo-dark',
+        bgimage:'accordion-16-4.png',
+        navItem:'Accordion',
+        href:'#starter',
+      },
+      {
+        bgColor:'nav-green-dark',
+        bgimage:'card-16-4.png',
+        navItem:'Card',
+        href:'#starter',
+      },
+      {
+        bgColor:'nav-cyan-dark',
+        bgimage:'modals-16-4.png',
+        navItem:'Modals',
+        href:'#starter',
+      },
+      {
+        bgColor:'nav-red-dark',
+        bgimage:'forms-16-4.png',
+        navItem:'Forms',
+        href:'#starter',
+      },
+    ];
+
+  -
+    var navLinks={ 
+      about: [
+        {
+          title:'starter',
+          href:'#starter',
+        },
+        {
+          title:'services',
+          href:'#services',
+        },
+      ],
+      services: [
+        {
+          title:'about',
+          href:'#about',
+        },
+        {
+          title:'contact',
+          href:'#contact',
+        },
+      ],
+      contact: [
+        {
+          title:'services',
+          href:'#services',
+        },
+        {
+          title:'doc',
+          href:'#doc',
+        },
+      ],
+      doc: [
+        {
+          title:'contact',
+          href:'#contact',
+        },
+        {
+          title:'portfolio',
+          href:'#portfolio',
+        },
+      ],
+      portfolio: [
+        {
+          title:'doc',
+          href:'#doc',
+        },
+        {
+          title:'faq',
+          href:'#faq',
+        },
+      ],
+      faq: [
+        {
+          title:'portfolio',
+          href:'#portfolio',
+        },
+        {
+          title:'gallery',
+          href:'#gallery',
+        },
+      ],
+      gallery: [
+        {
+          title:'faq',
+          href:'#faq',
+        },
+        {
+          title:'starter',
+          href:'#starter',
+        },
+      ],
+      starter: [
+        {
+          title:'gallery',
+          href:'#gallery',
+        },
+        {
+          title:'about',
+          href:'#about',
+        },
+      ],
+    };  
+      
+
+mixin Navigations(config) 
+  .col-6.col-sm-3.col-lg-6.col-xl-3.min-vh-25.h-xl-25.position-relative.text-white.nav-hover-zoom(class=`${config.bgColor}`)
+    img.nav-img(src=`${CWD}assets/img/navigation/${config.bgimage}` alt='...')
+    .card-img-overlay.d-flex.flex-column.flex-center.align-items-xxl-start.justify-content-xxl-end.h-100.px-xxl-5.pb-xxl-4
+      a.text-light.fs-1.fs-xxl-2.stretched-link.items.fw-bold.text-decoration-none( href=`${config.href}`)=config.navItem
+
+append content
+  #offcanvasStart.offcanvas.offcanvas-start.home-content.show(tabindex='-1', data-bs-backdrop="false" data-bs-scroll="true" data-base-content='home')
+    .offcanvas-body.d-flex.flex-column.flex-center
+      a(href="index.html").text-center
+        img.mb-3.logo(src=`${CWD}assets/img/logos/logo-16.png` alt="logo")
+      h1.fw-medium.fs-2.fs-md-3.fs-sm-4 in with the new
+        span.text-success .
+      p.mt-3.text-900.fs-0.text-center.d-sm-none.d-lg-block No two companies are alike. We get that. Customize Boots'5
+        br.d-none.d-sm-block.d-lg-none.d-xl-block
+        | to fit the way you create your stunning website.
+      a(href="#contact").btn.btn-rounded-gradient-primary.mt-4
+        |  Try it free
+      p.text-500.mt-2 No credit card required
+  #offcanvasEnd.offcanvas.offcanvas-end.home-nav.px-0.show(tabindex='-1', data-bs-backdrop="false" data-bs-scroll="true" data-base-content='nav')
+    .offcanvas-body.p-0.position-lg-fixed.position-relative
+      .row.vh-lg-100.g-0
+        each item in navItems
+          +Navigations(item)
+                
+  +About(navLinks.about)
+  +Services(navLinks.services) 
+  +Contact(navLinks.contact)
+  +Doc(navLinks.doc)
+  +Portfolio(navLinks.portfolio)
+  +Faq(navLinks.faq)  
+  +Gallery(navLinks.gallery)
+  +Starter(navLinks.starter)   
+      
+block append afterMainContent
+  +PortfolioModal     

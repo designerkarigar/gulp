@@ -1,0 +1,16 @@
+mixin Starter(navlink)
+  +Section('container-fluid')#starter.p-0.page.d-none
+    .row
+      .col-lg-8.col-xl-9.order-1.order-lg-0.pt-10.pt-xl-7.pt-xxl-8.pb-0
+        .row.min-vh-100.flex-center
+          .col-11.col-xl-7
+            .text-center.mb-5.mb-lg-6
+              h2 Simple Page
+              p.my-5 It is a sample page of Boots5 where you can place any text, image, components or any other content.
+                br
+                |Start your new project with Boots5 right now!
+
+          +Cta('cta-starter.png','btn-boots-primary').mb-2
+          +Footer('bg-soft-green','text-gradient-green-soft','text-success')
+      .col-lg-4.col-xl-3.position-absolute.position-lg-relative.ps-lg-0
+        +Stickyarea('Starter', 'starter.png', 'plane.png',navlink)

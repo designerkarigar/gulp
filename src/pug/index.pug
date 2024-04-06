@@ -1,0 +1,71 @@
+extends layouts/LayoutTheme
+
+
+append variables
+  - var bodyType = 'showcase';
+
+
+prepend scripts
+  script(src=`${CWD}vendors/rellax/rellax.min.js`) 
+
+block content 
+  #preloader.preloader
+    .loader
+      .line-scale-pulse-out-rapid
+        span 
+        span
+        span
+        span
+        span 
+
+  section.py-10.text-center
+    +Background({ image: `${CWD}assets/img/header-dark.png`, attrs: { style: { 'background-position': 'left','background-size':'cover','background-repeat': 'no-repeat' } }, className: 'bg-size ' })
+    .container-fluid
+      .row.justify-content-center
+        .col(style='max-width: 55rem')
+          h1.d-inline-block.fs-4.fs-sm-5.position-relative.px-4.pt-3.pt-sm-0.fw-black.text-light Stand Out!
+          p.mb-6.text-light Portfolios comes in all shapes and sizes, but 
+            br
+            |Boots'5 shows what a great one looks like.
+            
+          a.btn.btn-gradient-warning.hover-top.mb-sm-0.me-3(href='https://themewagon.com/themes/boots5-elegant-bootstrap-5-website-template/' role='button') Buy
+          a.btn.btn-gradient-primary.hover-top(href=`${CWD}nav-eight-item-four-column.html#doc` role='button') Docs
+ 
+
+  section.pb-2.pt-8.pt-sm-10.showcase
+    +Background({ image: `${CWD}assets/img/showcase.png`, attrs: { style: { 'background-position': 'center', } }, className: 'bg-size' })
+    .container-fluid
+      .row.justify-content-center(data-parallax data-rellax-speed="1") 
+        .col-md-10.col-xl-8
+          .row
+            - 
+              var 
+                pages = [
+                  'nav-four-item-two-column',
+                  'nav-four-item-one-column',
+                  'nav-six-item-two-column',
+                  'nav-six-item-three-column',
+                  'nav-eight-item-four-column',
+                  'nav-sixteen-item-four-column',
+                ];
+            each page in pages
+              .col-lg-6.mt-5.px-4
+                a(href=`${page}.html` target="_blank")
+                  img.w-100(src=`${CWD}assets/img/screenshots/${page}.png` alt='...').img-fluid.rounded-3
+
+          .row.justify-content-center.pt-6
+            .col-lg-6.text-center.mt-2.mt-lg-0.showcase-footer
+              p.fs--1.ls.mb-0.text-white Made with
+                span.fas.fa-heart.text-danger.mx-1
+                | by
+                a(href="https://themewagon.com/").text-white Themewagon
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,85 @@
+mixin Contact(navlink)
+  +Section('container-fluid')#contact.page.p-0.d-none
+    .top-0.w-100 
+      .row
+        .col-lg-8.col-xl-9.order-1.order-lg-0.pt-6.pt-lg-0
+          section.pt-8.pt-xl-7.pt-xxl-8.pb-0
+            +Background({image: `${CWD}assets/img/contact-bg.png`, attrs: { style: { 'background-position': 'left center', 'background-size': 'auto',} }, className: 'bg-size' })
+            .container-fluid
+              .row.justify-content-center.pb-5
+                .col-sm-9.col-lg-6
+                  .text-center.mb-5.mb-lg-6
+                    h2
+                      span.fw-medium Get In 
+                      | Touch
+                  h4 Connect with us
+                  p.mb-7 Having the shortest possible delay between idea and launch is crucial
+                    br.d-none.d-xxl-block
+                    |in business.    
+                  .d-flex.align-items-center.mb-2
+                    .icon.icon-warning.shadow-1
+                      i.fas.fa-phone.fs-1
+                    .flex-1.ms-3
+                      p.fw-bold.mb-0.text-gradient-orange-1
+                        a(href='tel:+880124332334') +880124332334
+                  .d-flex.align-items-center.mb-2
+                    .icon.icon-warning.shadow-2
+                      i.fas.fa-envelope.fs-1
+                    .flex-1.ms-3
+                      p.fw-bold.mb-0.text-gradient-orange-2 
+                        a(href='mailto:mail.something@email.com ') mail.something@email.com 
+                  .d-flex.align-items-center
+                    .icon.icon-warning.fs-2.shadow-3
+                      i.fas.fa-map-marker-alt
+                    .flex-1.ms-3
+                      p.fw-bold.text-gradient-orange-3.mb-0 35 King Street Bristol, BS1 4DZ, Perks Heights
+                  hr.my-6.text-200  
+                  .text-center.mb-5.mb-lg-6
+                    h2.mb-5 Follow 
+                    ul.list-unstyled.list-inline
+                      li.list-inline-item.mx-2
+                        a(href="#!")
+                          img(src=`${CWD}assets/img/icons/facebook.png` alt='...')
+                      li.list-inline-item.mx-2
+                        a(href="#!")
+                          img(src=`${CWD}assets/img/icons/twitter.png` alt='...')   
+                      li.list-inline-item.mx-2
+                        a(href="#!")
+                          img(src=`${CWD}assets/img/icons/youtube.png` alt='...') 
+                      li.list-inline-item.mx-2
+                        a(href="#!")
+                          img(src=`${CWD}assets/img/icons/linkdin.png` alt='...') 
+                      li.list-inline-item.mx-2
+                        a(href="#!")
+                          img(src=`${CWD}assets/img/icons/google-plus.png` alt='...')  
+                  hr.my-6.text-200     
+                  h4 Drop us a line
+                  p.mb-7 Our team are eagerly waiting to help you growing your business. Please feel free to contact with us.
+                  form(data-form onsubmit="return false").row.g-4
+                    label.form-label.text-700(for='inputName')
+                      i.fas.fa-user.me-2
+                      | NAME
+                    input.form-control.form-boots-control.mt-0#inputName(type='text' name='name')
+                    label.form-label.text-700(for='inputEmail4') 
+                      i.fas.fa-envelope.me-2
+                      |YOUR EMAIL
+                    input.form-control.form-boots-control.mt-0#inputEmail4(type='email' name='email') 
+                    label.form-label.text-700(for='validationTextarea') 
+                      i.fas.fa-pen.me-2
+                      |MESSAGE
+                    textarea.form-control.is-invalid.border-400#validationTextarea.form-boots-control.mt-0(placeholder='Message' rows="6" cols="50" required name='message')  
+                    button.btn.btn-boots-warning.w-100.mt-5(type='submit') Send
+                    .feedback 
+                     
+              .row.justify-content-center.mt-4.py-3
+                .col-12.col-lg-10
+                  .rounded.googlemap.min-vh-50( data-gmap data-latlng='48.8583701,2.2922873,17', data-scrollwheel='false', data-icon=`${CWD}assets/img/map-marker.png`, data-zoom='17', data-theme='Default')
+                    .marker-content.py-3
+                      h5 Eiffel Tower
+                      p Gustave Eiffel's iconic, wrought-iron 1889 tower,
+                        br
+                        |  with steps and elevators to observation decks. 
+
+              +Footer('bg-soft-orange-1','text-gradient-orange-soft-1','text-warning')
+        .col-lg-4.col-xl-3.col-12.position-absolute.position-lg-relative.ps-lg-0
+          +Stickyarea('Contact', 'contact.png', 'map.png',navlink)

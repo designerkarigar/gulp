@@ -1,0 +1,13 @@
+mixin Footer(bg,textColor,iconColor)
+  .row.justify-content-center.my-3
+    .col-12.col-lg-10
+      .card(class=`${bg}`)
+        .card-body.py-3
+          .row
+            .col-lg-6.text-center.text-lg-start
+              p.fs--1.my-2.fw-bold(class=`${textColor}`) All rights Reserved &copy; Your Company, 2021
+            .col-lg-6.d-lg-flex.align-self-center.justify-content-end.text-center
+              p.fs--1.mb-0(class=`${textColor}`) Made with 
+                span.fas.fa-heart.mx-1(class=`${iconColor}`)
+                | by
+                a(href="https://themewagon.com/")  Themewagon

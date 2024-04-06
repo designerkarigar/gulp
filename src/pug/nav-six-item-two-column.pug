@@ -1,0 +1,181 @@
+extends  layouts/LayoutTheme
+include mixins/common/Card
+include mixins/pages/About
+include mixins/pages/Services
+include mixins/pages/Portfolio
+include mixins/pages/Contact
+include mixins/pages/Faq
+include mixins/pages/Gallery
+
+block append styles
+  link(href=`${CWD}vendors/swiper/swiper-bundle.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/prism/prism.css`, rel='stylesheet')
+
+block append scripts
+  script(src='https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL')
+  script(src=`${CWD}vendors/swiper/swiper-bundle.min.js`)
+  script(src=`${CWD}vendors/isotope-layout/isotope.pkgd.min.js`) 
+  script(src=`${CWD}vendors/isotope-packery/packery-mode.pkgd.min.js`)  
+  script(src!=`https://maps.googleapis.com/maps/api/js?key=${APIGmap}&callback=initMap` async)
+  script(src=`${CWD}vendors/countup/countUp.umd.js`) 
+  script(src=`${CWD}vendors/bigpicture/BigPicture.js`)
+
+append variables
+  - var gridNav = 'nav-six-item-two-column';
+  - var breakPoint = 'lg';
+  
+  -
+    var navItems= [
+      {
+        bgColor:'nav-blue-soft',
+        bgimage:'nav-6-2.png',
+        icons:'diamond-6-2.png',
+        navItem:'About',
+        href:'#about',
+      },
+      {
+        bgColor:'nav-blue-dark',
+        bgimage:'nav-6-2.png',
+        icons:'thunder-6-2.png',
+        navItem:'Services',
+        href:'#services',
+      },
+      {
+        bgColor:'nav-cyan-soft',
+        bgimage:'nav-6-2.png',
+        icons:'trophy-6-2.png',
+        navItem:'Portfolio',
+        href:'#portfolio',
+      },
+      {
+        bgColor:'nav-cyan-dark',
+        bgimage:'nav-6-2.png',
+        icons:'map-6-2.png',
+        navItem:'Contact',
+        href:'#contact',
+      },
+      {
+        bgColor:'nav-green-soft',
+        bgimage:'nav-6-2.png',
+        icons:'bubble-6-2.png',
+        navItem:'FAQ',
+        href:'#faq',
+      },
+      {
+        bgColor:'nav-green-dark',
+        bgimage:'nav-6-2.png',
+        icons:'camera-6-2.png',
+        navItem:'Gallery',
+        href:'#gallery',
+      },
+
+    ];
+
+  -
+    var navLinks={ 
+      about: [
+        {
+          title:'gallery',
+          href:'#gallery',
+        },
+        {
+          title:'services',
+          href:'#services',
+        },
+      ],
+      services: [
+        {
+          title:'about',
+          href:'#about',
+        },
+        {
+          title:'contact',
+          href:'#contact',
+        },
+      ],
+      portfolio: [
+        {
+          title:'contact',
+          href:'#contact',
+        },
+        {
+          title:'faq',
+          href:'#faq',
+        },
+      ],
+      contact: [
+        {
+          title:'services',
+          href:'#services',
+        },
+        {
+          title:'portfolio',
+          href:'#portfolio',
+        },
+      ],
+    
+      faq: [
+        {
+          title:'portfolio',
+          href:'#portfolio',
+        },
+        {
+          title:'gallery',
+          href:'#gallery',
+        },
+      ],
+   
+      gallery: [
+        {
+          title:'faq',
+          href:'#faq',
+        },
+        {
+          title:'about',
+          href:'#about',
+        },
+      ],
+      
+    };  
+         
+
+mixin Navigations(config) 
+  .col-6.col-md-4.col-lg-6.position-relative.text-white.nav-hover-zoom.nav-height(class=`${config.bgColor}`)
+    img.nav-img.h-100(src=`${CWD}assets/img/navigation/${config.bgimage}` alt='...')
+    .card-img-overlay.d-flex.flex-column.flex-sm-row.flex-center.justify-content-xxl-start.h-100.px-4.px-md-5
+      .mb-3 
+        img.nav-icons(src=`${CWD}assets/img/lineicons/${config.icons}`  alt="icon")
+      a.text-light.fs-1.fs-xl-2.fs-xxl-3.stretched-link.items.fw-bold.text-decoration-none.ps-sm-4( href=`${config.href}`)=config.navItem 
+
+append content
+  #offcanvasStart.offcanvas.offcanvas-start.home-content.show(tabindex='-1', data-bs-backdrop="false" data-bs-scroll="true" data-base-content='home')
+    .offcanvas-body.d-flex.flex-column.flex-center.h-sm-25vh.h-lg-50vh
+      .row.flex-center 
+        .col-10.col-sm-9
+          p.fs-1.text-dark.font-sans-serif At 
+            span.fw-bolder.text-gradient-blue boots
+            span.fw-bolder.text-gradient-orange-1 5 
+            | our benefits aren't just limited to Web design. With a focus on superior user experience, we craft templates for your outstanding website.
+            
+          a.btn.ps-0.pe-2.mt-3.mt-lg-5(href='#!' data-bigpicture!={vimeoSrc: '58558497#t=10'})
+            .d-flex.align-items-center
+              span.fa-layers.fa-fw.fs-4.text-danger
+                i.fas.fa-circle.ms-0
+                i.fa-inverse.fas.fa-play.ms-0(data-fa-transform='shrink-12 right-1.5')
+              span.fw-bold.text-700.ps-1 Watch our Story
+
+  #offcanvasEnd.offcanvas.offcanvas-end.home-nav.show(tabindex='-1', data-bs-backdrop="false" data-bs-scroll="true" data-base-content='nav')
+    .offcanvas-body.p-0.position-lg-fixed.position-relative
+      .row.vh-lg-100.g-0
+        each item in navItems
+          +Navigations(item)
+                
+  +About(navLinks.about)
+  +Services(navLinks.services) 
+  +Portfolio(navLinks.portfolio)
+  +Contact(navLinks.contact)
+  +Faq(navLinks.faq)  
+  +Gallery(navLinks.gallery)       
+
+block append afterMainContent
+  +PortfolioModal    

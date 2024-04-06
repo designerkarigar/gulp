@@ -1,0 +1,116 @@
+append variables
+  -
+    var services= [
+      {
+        image:'development.png',
+        order:'order-0',
+        titleColor:'text-gradient-orange-1',
+        tilte: 'Development',
+        text: `Our award-winning team follow industry best practices to develop software.`,
+        padding:'pe-4',
+      },
+      {
+        image:'design.png',
+        order:'order-1',
+        titleColor:'text-gradient-pink-1',
+        tilte: 'Design',
+        text: 'Our unique tools design grahphics & HTML5 templates 4X faster than our rivals.',
+        padding:'ps-4',
+      },
+      {
+        image:'application.png',
+        order:'order-0',
+        titleColor:'text-gradient-blue',
+        tilte: 'Application',
+        text:'Having the shortest possible delay between idea and launch is crucial in business possible delay between ideapossible delay between idea',
+        padding:'pe-4',
+      },
+
+    ];
+
+mixin Service(config) 
+  .col-xl-9.col-xxl-8.my-6
+    .d-sm-flex.flex-center
+      img(src=`${CWD}assets/img/services/${config.image}` alt='services' class=`${config.order} ${config.padding}`)
+      .flex-1.text-center.text-sm-start
+        h3.mb-3.fw-bolder(class=`${config.titleColor}`)=config.tilte 
+        p.mb-0.text-1200!=config.text 
+
+mixin Brand(image)
+  .col-6.col-sm-4.text-center&attributes(attributes)
+    img.img-fluid(src=`${CWD}assets/img/brands/${image}` alt='...' )
+
+mixin Brands
+  .row.pt-7.flex-center
+    .col-xl-9
+      .row
+        h2.text-center.mb-6
+          span.fw-medium Our 
+          | Valuable Clients
+        +Brand('mailbluster.png').mb-4
+        +Brand('netflix.png').mb-4
+        +Brand('google.png').mb-4
+        +Brand('theme-wagon.png').mb-4
+        +Brand('cerwin.png').mb-4
+        +Brand('microsoft.png').mb-4
+
+
+mixin PriceItem(config, ...items)
+  .col-sm-6.col-xl-4.pt-4.px-md-2
+    .card.card-span.h-100(class=`${config.bg}` style="border-radius:1rem;")&attributes(attributes)
+      .card-body.d-flex.flex-column.justify-content-around.px-xl-4.px-xxl-5
+        .text-center
+          h2.fs-lg-2.fx-xxl-4.text-800.my-3=config.title
+          h2.mb-3.fs-lg-2.fs-xxl-4(class=`${config.priceColor}`)= config.footerTitle 
+            span.text-gradient-gray.fs-1= config.month
+
+        ul.list-unstyled.my-4.ps-5.ps-lg-0.ps-xl-2.ps-xxl-5
+          each item in items      
+            li.mb-3
+              span.me-2
+                i.fas.fa-check-circle
+              =item 
+        .text-center
+          if config.hasBtnOutline
+            .d-grid 
+              button.btn.btn-klean-outline.border-0(type='submit') 
+                span.text-gradient-blue Purchase
+          else 
+            .d-grid  
+              button.btn.btn-pricing-danger.border-0(type='submit') Purchase
+
+mixin Pricing
+  .row.py-7.justify-content-center
+    h2.mb-4.text-center
+      span.fw-medium Choose 
+      | Your Plan
+
+    - const p1 = {title:'Basic',bg:'bg-white',priceColor:'text-gradient-blue' ,footerTitle:'$20',month:'/ monthly', hasBtnOutline: true}
+    - const p2 = {title:'Business',bg:'bg-white',priceColor:'text-gradient-blue' , footerTitle: '$30', month:'/ monthly', hasBtnOutline: true }  
+    - const p3 = {title:'Advanced',bg:'bg-pricing-gradient',priceColor:'text-gradient-pink-2',footerTitle:'$50', month:'/ monthly', hasBtnOutline: false}
+
+    +PriceItem(p1, 'Unlimited ', 'Encrypted', 'No Traffic Logs','Works on All ')
+    +PriceItem(p3, 'Unlimited ', 'Encrypted', 'Yes Traffic Logs','Works on All ')  
+    +PriceItem(p2, 'Unlimited ', 'Encrypted', 'Yes Traffic Logs','Works on All ')
+
+mixin Services(navlink)
+  +Section('container-fluid')#services.p-0.page.d-none
+    .row
+      .col-lg-8.col-xl-9.order-1.order-lg-0.pt-8.pt-lg-0.pb-0.px-lg-0
+        .row.min-vh-25.flex-center
+          .col-lg-10
+            .card.card-span
+              +Background({image: `${CWD}assets/img/services/services-card-bg.png`, attrs: { style: { 'background-position': 'top center', 'background-size': 'cover','border-end-end-radius':'5.5rem', 'border-end-start-radius':'5.5rem', } }, className: 'bg-size ' })
+              .card-body.position-relative
+                .text-center.my-3
+                  h2.fs-1.fs-md-2.fs-lg-3 What We Do Best
+                  .row.flex-center 
+                    each service in services 
+                      +Service(service)
+            +Pricing  
+            +Brands  
+          .col-12
+            +Cta('cta-services.png','btn-boots-purple').mb-2
+            +Footer('bg-soft-danger','text-gradient-danger-soft','text-danger')
+      .col-lg-4.col-xl-3.col-12.position-absolute.position-lg-relative.ps-lg-0
+        +Stickyarea('Services', 'services.png', 'thunder-bolt.png',navlink)

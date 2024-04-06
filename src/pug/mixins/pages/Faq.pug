@@ -1,0 +1,64 @@
+append variables
+  -
+    var faqs= [
+      {
+        id: 1,
+        title  :'What is Boots5?',
+        description: `Bootst5 is a first Bootstrap 4 premium template. It is published in 1896 by talented Boots4 Team. It is also called most popular Bootsrap template in the world. The unique layout and clean design are the main reason of its populairity. At first Boots4 was published and get the top popularity among the web designer all over the world. After this version 2 is published and keep its popularity. Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque eligendi, nostrum sint, quis inventore molestiae porro sit aut unde accusantium neque earum dolor exercitationem architecto repellendus nobis aspernatur sapiente dolores? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur ratione laudantium accusamus, quibusdam odio ipsam blanditiis doloribus eius in delectus, corrupti mollitia vel nam!!`,
+      },
+      {
+        id: 2,
+        title  :'Why should I use Boots5?',
+        description: `There are many reason to use Boots4 Template. Unique layout design, smooth animation and clean ui design are the most important features of Boots4 Bootsrap Template.`,
+      },
+      {
+        id: 3,
+        title  :'How to get Boots5?',
+        description:`You can get Boots5 template from ThemeWagon. Where you also get quality free and premium templates <br> A template site may be the most convenient way to buy a template. Buying a template from a private owner allows you to assess the pedigree and upbringing of your template before choosing to take it home. Lastly, finding your template from a shelter, helps give a good home to a template which may not find one so readily.`,
+      },
+      {
+        id: 4,
+        title  :'What are the features of Boots5?',
+        description: 'There are many features in Boots5 Template. Unique layout design, smooth animation and clean ui design are the most important features of Boots4 Bootsrap Template.',
+      },
+      {
+        id: 5,
+        title  :'Write ten sentences about Boots5.',
+        description: 'There are many features in Boots4 Template. Unique layout design, smooth animation and clean ui design are the most important features of Boots4 Bootsrap Template.',
+      },
+      {
+        id: 6,
+        title  :'What are the differences between Boots4 & Boots5',
+        description: 'There are many features in Boots5 Template. Unique layout design, smooth animation and clean ui design are the most important features of Boots5 Bootsrap Template.',
+      },
+    ];
+
+
+mixin FaqItem(config, index)
+  .accordion-item
+    .my-3.border-start.border-3
+      h2(id=`heading${config.id}`).accordion-header
+        button.accordion-button.px-4.py-0.text-1000(type='button' data-bs-toggle='collapse'  class=index == 0 ? false : 'collapsed'  data-bs-target=`#collapse${config.id}` aria-expanded='true' aria-controls=`collapse${config.id}`)
+          span.mb-0.fw-bold.text-start.fs-1.px-2!=config.title
+      .accordion-collapse.collapse(id=`collapse${config.id}` class=index == 0 ? 'show' : false  aria-labelledby=`heading${config.id}`  data-bs-parent='#accordionExample')
+        .accordion-body.pt-3.px-4.text-justify!=config.description
+
+
+mixin Faq(navlink)
+  +Section('container-fluid')#faq.p-0.page.d-none
+    .row
+      .col-lg-8.col-xl-9.order-1.order-lg-0.pt-10.pt-lg-7.pt-xxl-8.pb-0
+        .row.flex-center
+          .col-11.col-xl-6
+            .text-center.mb-5.mb-lg-6
+              h2
+                span.fw-medium Frequently Asked 
+                |  Questions
+              #accordionExample.accordion.mt-8
+                each faq, index in faqs
+                  +FaqItem(faq, index)
+          .col-xl-10
+            +Cta('cta-faq.png','btn-boots-warning').mb-2
+            +Footer('bg-soft-indigo','text-gradient-indigo-soft','text-info')
+      .col-lg-4.col-xl-3.position-absolute.position-lg-relative.ps-lg-0
+        +Stickyarea('FAQ', 'faq.png', 'bubble.png',navlink)
