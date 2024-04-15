@@ -23,6 +23,8 @@ block append scripts
   script(src!=`https://maps.googleapis.com/maps/api/js?key=${APIGmap}&callback=initMap` async)
   script(src=`${CWD}vendors/countup/countUp.umd.js`) 
   script(src=`${CWD}vendors/bigpicture/BigPicture.js`)
+  script(src=`${CWD}vendors/firebase.js/firebase-app.js`)
+  script(src=`${CWD}vendors/firebase.js/firebase-firestore.js`)
 
 append variables
   - var gridNav = 'nav-four-item-two-column';

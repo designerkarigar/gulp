@@ -13,6 +13,8 @@ import navbarInit from './navbar';
 import offcanvasInit from './offcanvas';
 import formInit from './form-processor';
 import detectorInit from './detector';
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
 
 /* -------------------------------------------------------------------------- */
@@ -32,3 +34,5 @@ docReady(navbarInit);
 docReady(bgPlayerInit);
 docReady(swiperInit);
 docReady(formInit);
+docReady(initializeApp);
+docReady(getFirestore);

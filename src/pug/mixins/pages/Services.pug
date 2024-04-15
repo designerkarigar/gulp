@@ -5,26 +5,58 @@ append variables
         image:'development.png',
         order:'order-0',
         titleColor:'text-gradient-orange-1',
-        tilte: 'Development',
-        text: `Our award-winning team follow industry best practices to develop software.`,
+        tilte: 'Understand',
+        text: `Our Social Media Handler understands your requirements thoroughly`,
         padding:'pe-4',
       },
       {
         image:'design.png',
         order:'order-1',
         titleColor:'text-gradient-pink-1',
-        tilte: 'Design',
-        text: 'Our unique tools design grahphics & HTML5 templates 4X faster than our rivals.',
+        tilte: 'Schedule Appointment',
+        text: 'Based on your requirement, We book a relevant Designer Appointment for pickup, Designs Finalisation and measurements',
         padding:'ps-4',
       },
       {
         image:'application.png',
         order:'order-0',
         titleColor:'text-gradient-blue',
-        tilte: 'Application',
-        text:'Having the shortest possible delay between idea and launch is crucial in business possible delay between ideapossible delay between idea',
+        tilte: 'Designer Visits',
+        text:'Our Expert Designers comes back to our in house Stitching Hub and collaborate with Masters and Karigars to make your custom outfits',
         padding:'pe-4',
       },
+      {
+        image:'application.png',
+        order:'order-1',
+        titleColor:'text-gradient-orange-1',
+        tilte: 'Stitching',
+        text:'After Stitching the Garments, Every stitched apparrel goes through the process of Quality Checks and Re-Measurements',
+        padding:'pe-4',
+      },
+      {
+        image:'application.png',
+        order:'order-0',
+        titleColor:'text-gradient-pink-1',
+        tilte: 'Quality Checks',
+        text:'Once Finalized and Approved, We deliver Back your stitched Garments at your doorsteps',
+        padding:'pe-4',
+      },
+      {
+        image:'application.png',
+        order:'order-1',
+        titleColor:'text-gradient-blue',
+        tilte: 'Delivery',
+        text:'At the time of Delivery, You can check fittings and other Designings mentioned',
+        padding:'pe-4',
+      },
+      {
+        image:'application.png',
+        order:'order-0',
+        titleColor:'text-gradient-orange-1',
+        tilte: 'Alterations',
+        text:'We take care of the alterations if required.',
+        padding:'pe-4',
+      }
 
     ];
 
@@ -46,7 +78,7 @@ mixin Brands
       .row
         h2.text-center.mb-6
           span.fw-medium Our 
-          | Valuable Clients
+          | Valuable Clients are in 
         +Brand('mailbluster.png').mb-4
         +Brand('netflix.png').mb-4
         +Brand('google.png').mb-4
@@ -74,10 +106,10 @@ mixin PriceItem(config, ...items)
           if config.hasBtnOutline
             .d-grid 
               button.btn.btn-klean-outline.border-0(type='submit') 
-                span.text-gradient-blue Purchase
+                span.text-gradient-blue Stitch Now
           else 
             .d-grid  
-              button.btn.btn-pricing-danger.border-0(type='submit') Purchase
+              button.btn.btn-pricing-danger.border-0(type='submit') Stitch Now
 
 mixin Pricing
   .row.py-7.justify-content-center
@@ -85,13 +117,13 @@ mixin Pricing
       span.fw-medium Choose 
       | Your Plan
 
-    - const p1 = {title:'Basic',bg:'bg-white',priceColor:'text-gradient-blue' ,footerTitle:'$20',month:'/ monthly', hasBtnOutline: true}
-    - const p2 = {title:'Business',bg:'bg-white',priceColor:'text-gradient-blue' , footerTitle: '$30', month:'/ monthly', hasBtnOutline: true }  
-    - const p3 = {title:'Advanced',bg:'bg-pricing-gradient',priceColor:'text-gradient-pink-2',footerTitle:'$50', month:'/ monthly', hasBtnOutline: false}
+    - const p1 = {title:'Suits',bg:'bg-white',priceColor:'text-gradient-blue' ,footerTitle:'Starts ',month:'800/-', hasBtnOutline: true}
+    - const p2 = {title:'Blouses',bg:'bg-white',priceColor:'text-gradient-blue' , footerTitle: 'Starts ', month:'650/-', hasBtnOutline: true }  
+    - const p3 = {title:'Lehengas',bg:'bg-pricing-gradient',priceColor:'text-gradient-pink-2',footerTitle:'Starts ', month:'3500/-', hasBtnOutline: false}
 
-    +PriceItem(p1, 'Unlimited ', 'Encrypted', 'No Traffic Logs','Works on All ')
-    +PriceItem(p3, 'Unlimited ', 'Encrypted', 'Yes Traffic Logs','Works on All ')  
-    +PriceItem(p2, 'Unlimited ', 'Encrypted', 'Yes Traffic Logs','Works on All ')
+    +PriceItem(p1, 'Free Pickup ', 'Free Delivery', 'Designer Assisst','Quality Checks')
+    +PriceItem(p3, 'Free Pickup ', 'Free Delivery', 'Designer Assisst','Quality Checks')  
+    +PriceItem(p2, 'Free Pickup ', 'Free Delivery', 'Designer Assisst','Quality Checks')
 
 mixin Services(navlink)
   +Section('container-fluid')#services.p-0.page.d-none
@@ -103,7 +135,7 @@ mixin Services(navlink)
               +Background({image: `${CWD}assets/img/services/services-card-bg.png`, attrs: { style: { 'background-position': 'top center', 'background-size': 'cover','border-end-end-radius':'5.5rem', 'border-end-start-radius':'5.5rem', } }, className: 'bg-size ' })
               .card-body.position-relative
                 .text-center.my-3
-                  h2.fs-1.fs-md-2.fs-lg-3 What We Do Best
+                  h2.fs-1.fs-md-2.fs-lg-3 How We Do Stitching & Designing?
                   .row.flex-center 
                     each service in services 
                       +Service(service)

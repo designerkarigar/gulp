@@ -3,23 +3,23 @@ append variables
     var counter= [
       {
         bg:'card-bg-line',
-        title:'Lines Of Code',
+        title:'Orders Closed',
         icons:'code.png',
         iconShadow:'shadow-icon-1',
-        number:'64973',
+        number:'4643',
         textColor:'text-gradient-blue',
       },
       {
         bg:'card-bg-coffee',
-        title:'Cups of Coffee',
+        title:'Happy Customers',
         icons:'coffee.png',
         iconShadow:'shadow-icon-2',
-        number:'64973',
+        number:'4643',
         textColor:'text-gradient-purple',
       },
       {
         bg:'card-bg-download',
-        title:'Download',
+        title:'Stitching',
         icons:'download.png',
         iconShadow:'shadow-icon-3',
         number:'64973',
@@ -34,7 +34,7 @@ mixin Counter(config)
       .card-body.py-8.d-flex.flex-center
         img(src=`${CWD}assets/img/${config.icons}`  alt="..."  class=`${config.iconShadow}`) 
     
-    h1.fs-lg-2.fs-xxl-4.mt-3.fw-bold.text-center(class=`${config.textColor}` data-countup!={endValue: 64973}) 0
+    h1.fs-lg-2.fs-xxl-4.mt-3.fw-bold.text-center(class=`${config.textColor}` data-countup!={endValue: 4643}) 0
     p.text-900.fw-bold.text-center.fs-xxl-1=config.title
 
 mixin TeamItem(name, image, designation, width)
@@ -56,28 +56,23 @@ mixin About(navlink)
           .col-11.col-xl-7 
             .text-center.mb-5.mb-lg-6
               h2
-                span.fw-medium The Story of 
-                |  Boots5
+                span.fw-medium What we do? 
+                |  Designer Karigar
             .position-relative   
               img.img-fluid.rounded-3(src=`${CWD}assets/img/rainbow.png`  alt="..." )    
-              a.player(href='#!' data-bigpicture!={ytSrc: 'eXkYd1bbu3Q'}) 
+              a.player(href='#!' data-bigpicture!={ytSrc: '1q8CyqgT7bQ'}) 
                 img(src=`${CWD}assets/img/player.png`  alt="..." )
                
-            h3.pb-4.pt-5 To Infinity and Beyond! 
-            p.text-1000.fs-1 At Boots5, we believe there is a way where customers are earned rather than
-              |bought. We're obsessively passionate about it, and our mission is to help you
+            h3.pb-4.pt-5 Hassle Free Stiching! 
+            p.text-1000.fs-1 At Designer Karigar, We specializes in providing expert tailoring services and creating exquisite designs
 
-              | achieve it.
-
-            p.text-800.mb-5 Boots5 was founded by ThemeWagon Team in 1896. It was called the world's first bootstrap four
+            p.text-800.mb-5 for various garments, including but not limited to suits, lehengas, sarees, blouses, and more.
               br
-              |template, and started as a Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam illo, magni 
+              |Looking for the perfect ladies tailoring shop near you? Designer Karigar is your ultimate destination, offering a wide array of services including exquisite blouse designs for lehengas. 
               br
-              |aut recusandae perspiciatis quam sed eveniet, debitis tempore natus corrupti nostrum deserunt,
+              |Our expert tailors specialize in creating stunning blouse designs tailored to perfection, ensuring that you stand out at any occasion. Whether you're searching for the latest blouse designs or need expert tailoring services, 
               br
-              | harum in dolor dolorem sit voluptatum iusto. recusandae perspiciatis quam sed eveniet, debitis 
-              br
-              |tempore natus corrupti nostrum recusandae perspiciatis quam sed eveniet, debitis tempore. 
+              |Designer Karigar is the tailor's near you that you can trust. Visit our tailoring store today and experience the epitome of style and elegance.
 
             .row.flex-center.pt-3.g-xxl-5#fun-facts
               each item in counter
@@ -91,21 +86,16 @@ mixin About(navlink)
               .col-lg-11.col-xxl-9
                 .row.justify-content-center
                   .col-6.mb-5
-                    +TeamItem('Alex Butler', 1, 'Fraud Manager',242)
+                    +TeamItem('Anjali', 1, 'Founder',242)
                   .col-6.mb-5
-                    +TeamItem('Andreas Heim', 2, 'Software Engineer',242)
+                    +TeamItem('Asha', 2, 'Operations Head',242)
                   .col-6.col-sm-4.col-auto.mb-5
-                    +TeamItem('Amanda Alleson', 3, 'UX Designer',133)
+                    +TeamItem('Chitra', 3, 'Lead Designer',133)
                   .col-6.col-sm-4.col-auto.mb-5
-                    +TeamItem('Brandon Renfrow', 4, 'Developer',133)
+                    +TeamItem('Pritish', 4, 'Designer',133)
                   .col-6.col-sm-4.col-auto.mb-5
-                    +TeamItem('Brian Childs', 5, 'Training Manager',133)
+                    +TeamItem('Tushar', 5, 'Delivery Partner',133)
                   .col-6.col-sm-4.col-auto.mb-5
-                    +TeamItem('Britney Muller', 6, 'SEO Scientist',133)
-                  .col-6.col-sm-4.col-auto.mb-5
-                    +TeamItem('Casey Coates', 7, 'Software Engineer',133)
-                  .col-6.col-sm-4.col-auto.mb-5
-                    +TeamItem('Dana', 8, 'Bug Hunter',133)  
 
         +Cta('cta-about.png','btn-boots-warning').mb-2
         +Footer('bg-soft-blue','text-gradient-blue-soft','text-primary')

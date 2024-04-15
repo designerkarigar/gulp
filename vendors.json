@@ -63,6 +63,11 @@
   "bigpicture":{
     "src": ["dist/BigPicture.js"],
     "dest": "bigpicture"
+  },
+
+  "firebase": {
+    "src": ["firebase-app.js", "firebase-firestore.js"],
+    "dest": "firebase.js"
   }
 
 }
